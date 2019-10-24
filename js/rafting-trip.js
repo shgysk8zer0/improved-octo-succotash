@@ -48,11 +48,21 @@ class RaftingTripElement extends HTMLElement {
 							currency: 'USD',
 							value: displayItems.reduce((sum, item) => sum + item.amount.value, 0),
 						}
-					}
+					},
+					// shippingOptions: [{
+					// 	id: 'standard',
+					// 	label: 'Standard shipping',
+					// 	amount: {
+					// 		currency: 'USD',
+					// 		value: '0.00'
+					// 	},
+					// 	selected: true
+					// }]
 				}, {
-					requestPayerName: true,
-					requestPayerEmail: true,
-					requestPayerPhone: true,
+					// requestPayerName: true,
+					// requestPayerEmail: true,
+					// requestPayerPhone: true,
+					// requestShipping: true,
 				});
 
 				await customElements.whenDefined('toast-message');
@@ -78,6 +88,17 @@ class RaftingTripElement extends HTMLElement {
 						await toast.show();
 						await toast.closed;
 						toast.remove();
+						const resp = await fetch('http://localhost:8080/payment/', {
+							method: 'POST',
+							headers: new Headers({
+								Accept: 'application/json',
+								'Content-Type': 'application/json'
+							}),
+							mode: 'cors',
+							body: JSON.stringify({paymentResponse, paymentRequest}),
+						});
+						const parsed = await resp.json();
+						console.info(parsed);
 					} catch(err) {
 						console.error(err);
 						$('#payment-dialog').remove();

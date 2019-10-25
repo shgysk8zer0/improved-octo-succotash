@@ -1,7 +1,7 @@
 'use strict';
 /*eslint no-unused-vars: 0*/
 const config = {
-	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.0-a12',
+	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.0-a13',
 	stale: [
 		/* Root document */
 		'/',

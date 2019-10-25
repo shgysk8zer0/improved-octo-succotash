@@ -1,6 +1,6 @@
 'use strict';
 /*eslint no-undef: 0*/
-/* 2019-10-22T2:56 */
+/* 2019-10-24T19:37 */
 self.importScripts('/sw-config.js');
 
 self.addEventListener('install', async event => {

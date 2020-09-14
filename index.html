@@ -37,13 +37,24 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="#3ba435" />
 		<title itemprop="headline">Rafting Demo</title>
 		<link rel="preconnect" href="https://api.github.com" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!--
+		header-bg-full: url("https://i.imgur.com/oeKJKPN.jpg"); /* 4320 x 2880 */
+		header-bg-h: url("https://i.imgur.com/oeKJKPNh.jpg"); /* 1024 x 683 */
+		header-bg-l: url("https://i.imgur.com/oeKJKPNl.jpg"); /* 640 x 427 */
+		header-bg-m: url("https://i.imgur.com/oeKJKPNm.jpg"); /* 320 x 213 */
+		-->
+		<link rel="preload" href="https://i.imgur.com/oeKJKPN.jpg" as="image" crossorigin="include-credentials" referrerpolicy="origin-when-cross-origin" importance="high" media="(min-width: 1025px)" />
+		<link rel="preload" href="https://i.imgur.com/oeKJKPNh.jpg" as="image" crossorigin="include-credentials" referrerpolicy="origin-when-cross-origin" importance="high" media="((min-width: 641px) and (max-width: 1024px))" />
+		<link rel="preload" href="https://i.imgur.com/oeKJKPNl.jpg" as="image" crossorigin="include-credentials" referrerpolicy="origin-when-cross-origin" importance="high" media="((min-width: 321px) and (max-width: 640px))" />
+		<link rel="preload" href="https://i.imgur.com/oeKJKPNm.jpg" as="image" crossorigin="include-credentials" referrerpolicy="origin-when-cross-origin" importance="high" media="(max-width: 320px)" />
 		<link rel="preload" href="https://cdn.kernvalley.us/fonts/roboto.woff2" as="font" type="font/woff2" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
 		<link rel="preload" href="https://cdn.polyfill.io/v3/polyfill.min.js" as="script" type="text/javascript" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
 		<link rel="preload" href="https://cdn.kernvalley.us/components/github/user.html" as="fetch" type="text/html" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preload" href="https://cdn.kernvalley.us/components/github/user.css" as="style" type="text/css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preload" href="https://cdn.kernvalley.us/components/toast-message.html" as="fetch" type="text/html" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preload" href="https://cdn.kernvalley.us/components/toast-message.css" as="style" type="text/css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<script type="module" src="/js/index.js" async=""></script>
+		<!-- <script type="module" src="/js/index.js" referrerpolicy="no-referrer async=""></script> -->
+		<script src="/js/index.min.js" referrerpolicy="no-referrer" async=""></script>
 		<link rel="manifest" href="/manifest.json" />
 		<link rel="license" href="/LICENSE" />
 		<link rel="icon" href="/img/favicon.svg" type="image/svg+xml" sizes="any" />
@@ -52,7 +63,8 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/img/icon-16.png" />
 		<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#3ba435" />
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="stylesheet" href="/css/index.css" media="all" />
+		<!-- <link rel="stylesheet" href="/css/index.css" referrerpolicy="no-referrer" media="all" /> -->
+		<link rel="stylesheet" href="/css/index.min.css" referrerpolicy="no-referrer" media="all" />
 	</head>
 	<body id="top" class="grid font-main background-primary color-default">
 		<header id="header" class="background-cover background-fixed background-center color-alt">

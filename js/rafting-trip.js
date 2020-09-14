@@ -1,7 +1,8 @@
-import {$} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $ } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import PaymentRequestShim from 'https://cdn.kernvalley.us/js/PaymentAPI/PaymentRequest.js';
-import {getSlotContent, removeSlottedElements} from './slot-helpers.js';
+import { getSlotContent, removeSlottedElements } from './slot-helpers.js';
 import 'https://cdn.kernvalley.us/components/toast-message.js';
+
 if (! ('PaymentRequest' in window)) {
 	window.PaymentRequest = PaymentRequestShim;
 }
@@ -9,10 +10,11 @@ if (! ('PaymentRequest' in window)) {
 class RaftingTripElement extends HTMLElement {
 	constructor() {
 		super();
-		this.setAttribute('itemtype', 'https://schema.org/Event');
-		this.setAttribute('itemscope', '');
-		this.attachShadow({mode: 'open'});
+		this.attachShadow({ mode: 'open' });
+
 		fetch(new URL('/js/rafting-trip.html', document.baseURI)).then(async resp => {
+			this.setAttribute('itemtype', 'https://schema.org/Event');
+			this.setAttribute('itemscope', '');
 			const parser = new DOMParser();
 			const html = await resp.text();
 			const doc = parser.parseFromString(html, 'text/html');
@@ -110,6 +112,7 @@ class RaftingTripElement extends HTMLElement {
 					}
 				}
 			});
+
 			this.shadowRoot.append(...doc.head.children, ...doc.body.children);
 			this.dispatchEvent(new Event('ready'));
 		});
@@ -183,13 +186,16 @@ class RaftingTripElement extends HTMLElement {
 		el.slot = 'childPrice';
 		// el.setAttribute('itemprop', '');
 		el.textContent = Intl.NumberFormat(navigator.language, {style: 'currency', currency}).format(value);
-		removeSlottedElements('childPricer', this.shadowRoot);
+		removeSlottedElements('childPrice', this.shadowRoot);
 		this.append(el);
 	}
 
 	set image({url, height, width}) {
 		const img = new Image(width, height);
 		img.decoding = 'async';
+		img.loading = 'lazy';
+		img.crossOrigin = 'anonymous';
+		img.referrerPolicy = 'no-referrer';
 		img.src = url;
 		img.setAttribute('itemprop', 'image');
 		img.slot = 'image';

@@ -1,12 +1,17 @@
 @import url("https://cdn.kernvalley.us/css/core-css/theme/default/index.css");
 
-:root {
-	--header-bg-full: url("https://i.imgur.com/oeKJKPN.jpg"); /* 4320 x 2880 */
-	--header-bg-h: url("https://i.imgur.com/oeKJKPNh.jpg"); /* 1024 x 683 */
-	--header-bg-l: url("https://i.imgur.com/oeKJKPNl.jpg"); /* 640 x 427 */
-	--header-bg-m: url("https://i.imgur.com/oeKJKPNm.jpg"); /* 320 x 213 */
+@media all {
+	:root[data-theme], :root:not([data-theme]) {
+		--header-bg-full: url("https://i.imgur.com/oeKJKPN.jpg"); /* 4320 x 2880 */
+		--header-bg-h: url("https://i.imgur.com/oeKJKPNh.jpg"); /* 1024 x 683 */
+		--header-bg-l: url("https://i.imgur.com/oeKJKPNl.jpg"); /* 640 x 427 */
+		--header-bg-m: url("https://i.imgur.com/oeKJKPNm.jpg"); /* 320 x 213 */
 
-	--nav-height: 3.7rem;
-	--header-height: 0;
-	--footer-height: auto;
+		--accent-color-light: #3ba435;
+		--accent-color-dark: var(--accent-color-light);
+		--button-primary-active-background: #168010;
+		--nav-height: 3.7rem;
+		--header-height: 0;
+		--footer-height: auto;
+	}
 }

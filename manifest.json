@@ -1,33 +1,42 @@
 {
   "name": "Rafting Demo",
   "short_name": "Rafting",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "start_url": "/",
   "lang": "en",
   "description": "A quick rafting demo PWA",
   "icons": [{
     "src": "/img/favicon.svg",
     "sizes": "any",
-    "type": "image/svg+xml"
+    "type": "image/svg+xml",
+    "purpose": "maskable any"
   }, {
     "src": "/img/icon-192.png",
     "sizes": "192x192",
-    "type": "image/png"
+    "type": "image/png",
+    "purpose": "maskable any"
   }, {
     "src": "/img/icon-512.png",
     "sizes": "512x512",
-    "type": "image/png"
+    "type": "image/png",
+    "purpose": "maskable any"
   }],
   "screenshots": [{
     "src": "https://i.imgur.com/oeKJKPNl.jpg",
     "sizes": "640x427",
     "type": "image/jpeg"
+  }, {
+    "src": "https://i.imgur.com/oeKJKPNm.jpg",
+    "sizes": "320x213",
+    "type": "image/jpeg"
   }],
+  "features": [
+    "When installed, content may be available offline",
+    "Supports dark mode system preference where available",
+    "Easy payments via the PaymentRequest API, making checkout fast and convenient",
+    "Simple sign-in and registration, just like a native application"
+  ],
   "theme_color": "#3ba435",
   "background_color": "#fefefe",
-  "display": "standalone",
-  "developer": {
-		"name": "Chris Zuber",
-		"url": "http://shgysk8zer0.github.io"
-	}
+  "display": "standalone"
 }

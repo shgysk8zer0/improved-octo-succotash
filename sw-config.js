@@ -1,84 +1,22 @@
-'use strict';
-/*eslint no-unused-vars: 0*/
+/* eslint no-unused-vars: 0 */
+/* eslint-env serviceworker */
 const config = {
-	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.0-a13',
-	stale: [
-		/* Root document */
+	version: '1.1.0',
+	fresh: [
 		'/',
-
-		/* Other HTML */
-		'https://cdn.kernvalley.us/components/toast-message.html',
-		'https://cdn.kernvalley.us/components/login-form/login-form.html',
-		'https://cdn.kernvalley.us/components/registration-form/registration-form.html',
-		'/js/rafting-trip.html',
-		'/js/schema-postal-address.html',
-
-		/* JS, `customElements`, etc. */
-		'/js/index.js',
-		'/js/slot-helpers.js',
-		'/js/offer-catelog.js',
-		'/js/rafting-trip.js',
-		'/js/schema-postal-address.js',
-		'https://cdn.kernvalley.us/components/share-button.js',
-		'https://cdn.kernvalley.us/js/std-js/share-config.js',
-		'https://cdn.kernvalley.us/components/current-year.js',
-		'https://cdn.kernvalley.us/js/std-js/deprefixer.js',
-		'https://cdn.kernvalley.us/js/std-js/shims.js',
-		'https://cdn.kernvalley.us/js/std-js/md5.js',
-		'https://cdn.kernvalley.us/js/std-js/Notification.js',
-		'https://cdn.kernvalley.us/js/std-js/webShareApi.js',
-		'https://cdn.kernvalley.us/js/std-js/esQuery.js',
-		'https://cdn.kernvalley.us/js/std-js/functions.js',
-		'https://cdn.kernvalley.us/components/login-button.js',
-		'https://cdn.kernvalley.us/components/logout-button.js',
-		'https://cdn.kernvalley.us/components/register-button.js',
-		'https://cdn.kernvalley.us/components/gravatar-img.js',
-		'https://cdn.kernvalley.us/components/toast-message.js',
-		'https://cdn.kernvalley.us/js/std-js/asyncDialog.js',
-		'https://cdn.kernvalley.us/js/User.js',
-		'https://cdn.kernvalley.us/components/login-form/login-form.js',
-		'https://cdn.kernvalley.us/components/registration-form/registration-form.js',
-		'https://cdn.kernvalley.us/js/PaymentAPI/PaymentRequest.js',
-		'https://cdn.kernvalley.us/js/PaymentAPI/PaymentRequestUpdateEvent.js',
-		'https://cdn.kernvalley.us/js/PaymentAPI/PaymentAddress.js',
-		'https://cdn.kernvalley.us/js/PaymentAPI/PaymentResponse.js',
-		'https://cdn.kernvalley.us/js/PaymentAPI/BasicCardResponse.js',
-		'https://cdn.kernvalley.us/js/PaymentAPI/BillingAddress.js',
-		'https://cdn.kernvalley.us/components/payment-form/payment-form.js',
-
-		/* CSS */
-		'/css/index.css',
-		'/css/vars.css',
-		'/css/layout.css',
-		'/css/header.css',
-		'/css/nav.css',
-		'/css/main.css',
-		'/css/sidebar.css',
-		'/css/footer.css',
-		'https://cdn.kernvalley.us/css/core-css/layout/default/index.css',
-		'https://cdn.kernvalley.us/css/core-css/layout/shared.css',
-		'https://cdn.kernvalley.us/css/core-css/theme/default/index.css',
-		'https://cdn.kernvalley.us/css/core-css/theme/default/light.css',
-		'https://cdn.kernvalley.us/css/core-css/theme/default/dark.css',
-		'https://cdn.kernvalley.us/css/core-css/theme/base.css',
-		'https://cdn.kernvalley.us/css/core-css/rem.css',
-		'https://cdn.kernvalley.us/css/core-css/viewport.css',
-		'https://cdn.kernvalley.us/css/core-css/element.css',
-		'https://cdn.kernvalley.us/css/core-css/class-rules.css',
-		'https://cdn.kernvalley.us/css/core-css/utility.css',
-		'https://cdn.kernvalley.us/css/core-css/fonts.css',
-		'https://cdn.kernvalley.us/css/core-css/animations.css',
-		'https://cdn.kernvalley.us/css/normalize/normalize.css',
-		'https://cdn.kernvalley.us/css/animate.css/animate.css',
-
-		/* Images & Icons */
+		'https://baconipsum.com/api/?paras=8&format=json&type=all-meat',
+	].map(url => new URL(url, location.origin).href),
+	stale: [
+		'/js/index.min.js',
+		'/css/index.min.css',
 		'/img/icons.svg',
-		'/img/apple-touch-icon.png',
-		'/img/icon-192.png',
-		'/img/favicon.svg',
-		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mail-send.svg',
-		'https://cdn.kernvalley.us/img/octicons/file-media.svg',
-
+		'/img/neon.svg',
+		'https://cdn.kernvalley.us/components/toast-message.html',
+		'https://cdn.kernvalley.us/components/toast-message.css',
+		'https://cdn.kernvalley.us/components/github/user.html',
+		'https://cdn.kernvalley.us/components/github/user.css',
+		'https://cdn.kernvalley.us/components/pwa/prompt.html',
+		'https://cdn.kernvalley.us/components/pwa/prompt.css',
 		/* Social Icons for Web Share API shim */
 		'https://cdn.kernvalley.us/img/octicons/mail.svg',
 		'https://cdn.kernvalley.us/img/logos/facebook.svg',
@@ -87,16 +25,14 @@ const config = {
 		'https://cdn.kernvalley.us/img/logos/linkedin.svg',
 		'https://cdn.kernvalley.us/img/logos/reddit.svg',
 		'https://cdn.kernvalley.us/img/logos/gmail.svg',
+		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mail-send.svg',
 		'https://cdn.kernvalley.us/img/logos/instagram.svg',
-
-		/* Fonts */
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
-		'https://cdn.kernvalley.us/fonts/Libertine.woff',
-
-		/* Other */
-		'/trips.json',
 	].map(path => new URL(path, location.origin).href),
-	fresh: [
-	].map(path => new URL(path, location.origin).href),
-	allowed: [],
+	allowed: [
+		/https:\/\/secure\.gravatar\.com\/avatar\/*/,
+		/https:\/\/i\.imgur\.com\/*/,
+		/https:\/\/api\.github\.com\/users\/*/,
+		/https:\/\/*\.githubusercontent.com\/u\/*/,
+	]
 };

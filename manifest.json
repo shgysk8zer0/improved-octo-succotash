@@ -25,7 +25,17 @@
     "src": "https://i.imgur.com/oeKJKPNl.jpg",
     "sizes": "640x427",
     "type": "image/jpeg"
+  }, {
+    "src": "https://i.imgur.com/oeKJKPNm.jpg",
+    "sizes": "320x213",
+    "type": "image/jpeg"
   }],
+  "features": [
+    "When installed, content may be available offline",
+    "Supports dark mode system preference where available",
+    "Easy payments via the PaymentRequest API, making checkout fast and convenient",
+    "Simple sign-in and registration, just like a native application"
+  ],
   "theme_color": "#3ba435",
   "background_color": "#fefefe",
   "display": "standalone"

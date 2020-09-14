@@ -14,9 +14,16 @@ import './schema-postal-address.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import './offer-catelog.js';
 
+document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`);
+
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
+
+requestIdleCallback(() => {
+	const $doc = $(document.documentElement);
+	$doc.debounce('resize', () => $doc.css({'--viewport-height': `${window.innerHeight}px`}));
+});
 
 Promise.allSettled([
 	ready(),
